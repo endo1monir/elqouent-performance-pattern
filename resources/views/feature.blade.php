@@ -35,32 +35,41 @@
 </header>
 
 <main class="max-w-6xl mx-auto py-12 sm:px-6 lg:px-8">
-  @foreach ($feature->comments as $comment)
+{{--  @foreach ($feature->comments as $comment)--}}
+    @foreach($feature->comments as $comment)
     <div class="px-10 py-8 bg-white shadow overflow-hidden sm:rounded-lg flex {{ $loop->first ? 'mb-8' : 'mb-4 max-w-4xl mx-auto' }}" id="comment-{{ $comment->id }}">
+    <div class="px-10 py-8 bg-white shadow overflow-hidden sm:rounded-lg flex " id="comment-{{ $comment->id }}">
       <div class="whitespace-no-wrap pr-8 border-r">
-        @if ($comment->user->photo)
+{{--        @if ($comment->user->photo)--}}
+          @if($comment->user->photo)
           <div class="w-12 h-12 rounded-full overflow-hidden bg-red-400">
             <img class="object-cover w-full h-full" src="/img/users/{{ $comment->user->photo }}" />
           </div>
-        @endif
+          @endif
+{{--        @endif--}}
+
         <div class="mt-2 text-sm leading-5 text-gray-900">
           {{ $comment->user->name }}
         </div>
         <div class="text-xs leading-5 text-gray-500">
-          {{ $comment->created_at->format('M j, Y \a\t g:i a') }}
+            {{$comment->created_at->format('M j, Y \a\t g:i a')}}
+{{--          {{ $comment->created_at->format('M j, Y \a\t g:i a') }}--}}
         </div>
-        @if ($comment->isAuthor())
+{{--        @if ($comment->isAuthor())--}}
+          @if($comment->isAuthor())
           <div class="flex items-center text-yellow-400">
             <svg class="fill-current w-3 h-3" viewBox="0 0 20 20">
               <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
             </svg>
             <div class="ml-1 text-xs font-medium">Author</div>
           </div>
-        @endif
+          @endif
+{{--        @endif--}}
       </div>
       <div class="px-8 flex-1 flex items-center">
         {{ $comment->comment }}
       </div>
+    </div>
     </div>
   @endforeach
 </main>

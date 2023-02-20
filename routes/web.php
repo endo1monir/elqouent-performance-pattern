@@ -15,6 +15,7 @@ use App\Http\Controllers\PostController;
 
 Route::get('posts',[PostController::class,'index']);
 Route::get('features',[\App\Http\Controllers\FeaturesController::class,'index']);
+Route::get('/features/{feature}',[\App\Http\Controllers\FeaturesController::class,'show']);
 Route::get('/', function () {
     return view('welcome');
 });
