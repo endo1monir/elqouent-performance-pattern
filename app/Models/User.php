@@ -32,9 +32,22 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-public function comments(){
-    return $this->hasMany(Comment::class);
-}
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    public function scopeSearch($query, string $terms = null)
+    {
+        collect(explode(' ',$terms))->filter()->each();
+    }
+
     /**
      * The attributes that should be cast.
      *

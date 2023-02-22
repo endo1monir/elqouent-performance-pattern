@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->foreignId('company_id')->after('id')->references('id')->on('companies');
-            $table->string('first_name')->after('name');
-            $table->string('last_name')->after('first_name');
+            $table->foreignId('company_id')->nullable()->after('id')->references('id')->on('companies');
+            $table->string('first_name')->nullable()->after('name');
+            $table->string('last_name')->nullable()->after('first_name');
 
         });
     }
